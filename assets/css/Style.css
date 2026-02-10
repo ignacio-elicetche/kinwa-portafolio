@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURACIÓN GLOBAL
+   1. GLOBAL SETTINGS & VARIABLES
    ========================================= */
 :root {
     --color-primary: #88a785;
@@ -35,7 +35,7 @@ body {
     padding-top: var(--header-height);
     background-color: var(--bg-light);
     overflow-x: hidden;
-    /* Evita scroll horizontal indeseado en móvil */
+    /* Prevent horizontal scroll on mobile */
 }
 
 img {
@@ -54,7 +54,7 @@ ul {
     list-style: none;
 }
 
-/* Utilitarios */
+/* --- Utilities --- */
 .container {
     width: 100%;
     max-width: var(--max-width);
@@ -76,7 +76,7 @@ ul {
 }
 
 /* =========================================
-   2. HEADER & NAVEGACIÓN
+   2. HEADER & NAVIGATION
    ========================================= */
 .main-header {
     background-color: var(--color-secondary);
@@ -106,7 +106,7 @@ ul {
     text-transform: uppercase;
 }
 
-/* Navegación Desktop por defecto */
+/* Desktop Navigation */
 .nav__list {
     display: flex;
     gap: 1.5rem;
@@ -146,7 +146,7 @@ ul {
     transform: translateY(-2px);
 }
 
-/* Elementos ocultos en Desktop */
+/* Mobile Triggers (Hidden on Desktop) */
 .hamburger {
     display: none;
 }
@@ -159,12 +159,10 @@ ul {
     display: contents;
 }
 
-/* En desktop se comportan normal */
-
 /* =========================================
-   3. SECCIONES (Hero, Features, About, Location)
+   3. SECTIONS (Hero, Features, About, Location)
    ========================================= */
-/* Hero */
+/* Hero Section */
 .hero__title {
     color: var(--color-accent);
     text-align: center;
@@ -184,7 +182,7 @@ ul {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Features */
+/* Features Grid */
 .features__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -225,7 +223,7 @@ ul {
     color: #555;
 }
 
-/* About (Grid 2 columnas) */
+/* About Section */
 .about {
     background-color: #f4f9f4;
     padding: 5rem 0;
@@ -305,7 +303,7 @@ ul {
     font-style: italic;
 }
 
-/* Location (Grid 2 columnas) */
+/* Location Section */
 .location {
     background-color: #fff;
 }
@@ -357,7 +355,7 @@ ul {
     transition: filter 0.3s ease;
 }
 
-/* Carrusel Infinito */
+/* Infinite Carousel Animation */
 .carousel-container {
     position: relative;
     display: flex;
@@ -417,9 +415,9 @@ ul {
 }
 
 /* =========================================
-   4. PÁGINAS ESPECÍFICAS (Menu y Booking)
+   4. SPECIFIC PAGES (Menu & Booking)
    ========================================= */
-/* Menu Page */
+/* Menu Page Styles */
 .page-title {
     text-align: center;
     font-size: 3rem;
@@ -445,7 +443,6 @@ ul {
     flex-wrap: wrap;
 }
 
-/* Wrap para desktop */
 .category-nav__link {
     color: var(--color-text);
     font-weight: 700;
@@ -541,7 +538,7 @@ ul {
     font-size: 1.3rem;
 }
 
-/* Booking Page */
+/* Booking Page Styles */
 .booking-section {
     min-height: 80vh;
     display: flex;
@@ -662,14 +659,13 @@ ul {
     opacity: 0.9;
 }
 
-
 /* =================================================================
-   5. RESPONSIVE MEDIA QUERIES (CORREGIDO Y AJUSTADO)
+   5. RESPONSIVE MEDIA QUERIES (Mobile & Tablet)
    ================================================================= */
 
 @media (max-width: 900px) {
 
-    /* Ajustes generales de texto */
+    /* Text Adjustments */
     .section-title {
         font-size: 2rem;
         margin-bottom: 2rem;
@@ -679,44 +675,37 @@ ul {
         font-size: 2rem;
     }
 
-    /* --- HEADER MÓVIL (HAMBURGUESA) --- */
+    /* --- Mobile Header (Hamburger) --- */
     .hamburger {
         display: block;
         background: none;
         border: none;
         font-size: 1.5rem;
-        /* Icono hamburguesa tamaño normal */
         color: var(--color-accent);
         cursor: pointer;
         padding: 5px;
     }
 
-    /* EL MENÚ DESLIZABLE (Ajustado para no verse gigante) */
+    /* --- Slide-out Mobile Menu --- */
     .nav {
         position: fixed;
         top: 0;
         right: -100%;
-        /* Oculto */
+        /* Hidden by default */
 
-        /* CAMBIOS AQUÍ: Hacemos el menú más angosto */
         width: 75%;
         max-width: 280px;
-        /* Nunca será más ancho que esto (tamaño tipo App) */
         height: 100vh;
 
         background-color: #f9fdf9;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        /* Animación más suave */
         padding: 2rem 1.5rem;
-        /* Menos padding interno */
 
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        /* Empieza arriba, no centrado forzado */
         padding-top: 5rem;
-        /* Espacio para no chocar con el botón cerrar */
     }
 
     .nav.active {
@@ -726,43 +715,37 @@ ul {
     .nav__list {
         flex-direction: column;
         gap: 1.2rem;
-        /* Menos espacio entre enlaces */
         align-items: flex-start;
-        /* Alineado a la izquierda se ve más ordenado */
         width: 100%;
         padding-left: 1rem;
-        /* Pequeña sangría */
     }
 
     .nav__link {
         font-size: 1.1rem;
-        /* Letra tamaño normal, no gigante */
         font-weight: 600;
         width: 100%;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        /* Línea sutil separadora */
         padding-bottom: 0.5rem;
     }
 
-    /* Quitamos el borde al último */
+    /* Remove border from last item */
     .nav__item:last-child .nav__link {
         border-bottom: none;
     }
 
-    /* Botón Cerrar Menú (X) */
+    /* Close Button (X) */
     .nav__close-btn {
         display: block;
         position: absolute;
         top: 20px;
         right: 20px;
         font-size: 1.5rem;
-        /* Icono X más discreto */
         color: #888;
         cursor: pointer;
         padding: 5px;
     }
 
-    /* Redes sociales en menú móvil */
+    /* Mobile Social Icons */
     .nav__socials-mobile {
         display: flex;
         gap: 1.5rem;
@@ -772,12 +755,11 @@ ul {
 
     .nav__socials-mobile .nav__link--social {
         font-size: 1.5rem;
-        /* Iconos sociales tamaño normal */
         color: var(--color-primary);
         border: none;
     }
 
-    /* --- STACKING (Apilar columnas para el resto de la web) --- */
+    /* --- Stack Columns for Mobile --- */
     .about__grid,
     .location__grid,
     .booking-form__grid {
@@ -804,13 +786,11 @@ ul {
         order: -1;
     }
 
-    /* Mapa un poco más bajo */
-
     .booking-card {
         padding: 1.5rem;
     }
 
-    /* Ajustes Menu Page */
+    /* Menu Page Adjustments */
     .menu-grid {
         grid-template-columns: 1fr;
     }
@@ -838,7 +818,7 @@ ul {
         font-size: 0.85rem;
     }
 
-    /* Footer */
+    /* Footer Adjustments */
     .main-footer__content {
         flex-direction: column;
         text-align: center;

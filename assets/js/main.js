@@ -1,27 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* =========================================
-       1. MENÚ HAMBURGUESA (MÓVIL)
-       ========================================= */
+    /* --- Mobile Navigation --- */
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
     const closeBtn = document.querySelector('.nav__close-btn');
-    const navLinks = document.querySelectorAll('.nav__link'); // Todos los enlaces
+    const navLinks = document.querySelectorAll('.nav__link');
 
     if (hamburger && nav) {
-        // Abrir menú
+        // Toggle menu visibility
         hamburger.addEventListener('click', () => {
             nav.classList.add('active');
         });
 
-        // Cerrar menú con botón X
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 nav.classList.remove('active');
             });
         }
 
-        // Cerrar menú al hacer click en cualquier enlace (Importante para la UX)
+        // Close menu when a link is clicked to improve UX
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
@@ -30,30 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =========================================
-       2. CARRUSEL INFINITO (Home Page)
-       ========================================= */
+    /* --- Infinite Carousel (Home Page) --- */
     const track = document.querySelector('.carousel-track');
 
     if (track) {
-        // Clonamos las tarjetas para el efecto infinito
+        // Clone items to create a seamless infinite loop effect
         const cards = Array.from(track.children);
+        
         cards.forEach(card => {
             const clone = card.cloneNode(true);
-            clone.setAttribute('aria-hidden', true); 
+            clone.setAttribute('aria-hidden', true); // Hide duplicates from screen readers
             track.appendChild(clone);
         });
     }
 
 
-    /* =========================================
-       3. FORMULARIO DE RESERVA (Booking Page)
-       ========================================= */
+    /* --- Booking Form Logic --- */
     const bookingForm = document.getElementById('bookingForm');
 
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Mock submission feedback (Replace with API call in production)
             alert('¡Reservation Request Sent! We will contact you shortly to confirm.');
             bookingForm.reset();
         });
